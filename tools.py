@@ -2,9 +2,11 @@ import requests
 import telnetlib
 from bs4 import BeautifulSoup
 
+# 爬取整个HTML页面
 def getHtml(url):
     return requests.get(url).text
 
+# 解析爬取到的HTML页的关键数据
 def parseHtml(html, result):
     soup = BeautifulSoup(html)
     ele = soup.find_all("td")
@@ -17,6 +19,7 @@ def parseHtml(html, result):
             result += ele[index].string + ','
     return result
 
+# 爬取指定页，通过getHtml()函数和parseHtml函数
 def spider():
     result = []
     results = []
@@ -34,6 +37,7 @@ def spider():
         result.clear()
     return usingList
 
+# 检查爬取到的IP是否可用
 def checkIP(ip, port):
     try:
         telnetlib.Telnet(ip, port = port, timeout = 3)
