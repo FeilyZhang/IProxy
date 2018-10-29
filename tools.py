@@ -19,7 +19,7 @@ def parseHtml(html, result):
             result += ele[index].string + ','
     return result
 
-# 爬取指定页，通过getHtml()函数和parseHtml函数
+# 爬取指定页，通过getHtml()函数和parseHtml()函数进行爬取与解析
 def spider():
     result = []
     results = []
@@ -37,7 +37,7 @@ def spider():
         result.clear()
     return usingList
 
-# 检查爬取到的IP是否可用
+# 检查爬取到的IP(及端口)是否可用
 def checkIP(ip, port):
     try:
         telnetlib.Telnet(ip, port = port, timeout = 3)
